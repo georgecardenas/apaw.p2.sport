@@ -9,7 +9,7 @@ public class SportListWrapper {
 	public SportListWrapper() {
 	}
 	
-	public List<SportWrapper> getVoteList() {
+	public List<SportWrapper> getSportList() {
 		return sportList;
 	}
 
