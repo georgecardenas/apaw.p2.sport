@@ -22,6 +22,9 @@ public class Dispatcher {
 	    // **/users
 		if ("users".equals(request.getPath())) {
 			response.setBody(userResource.userList().toString());
+		} else if("users".equals(request.paths()[0]) && "search".equals(request.paths()[1])){
+		    String sport = request.getParams().get("sport");
+		    response.setBody(userResource.getUserListbySport(sport).toString());
 		} else if ("sports".equals(request.getPath())){
 		    response.setBody(sportResource.sportList().toString());
 		} else {
@@ -59,11 +62,20 @@ public class Dispatcher {
 	}
 
 	public void doPut(HttpRequest request, HttpResponse response) {
-		switch (request.getPath()) {
-		default:
-			responseError(response, new InvalidRequestException(request.getPath()));
-			break;
-		}
+	    
+	    // **/users/{nick}/sports
+        if ("users".equals(request.paths()[0]) && "sport".equals(request.paths()[2])) {
+            String nick = request.paths()[1];
+            String sport = request.getBody();
+            try {
+                userResource.addSportToUser(nick, sport);
+                response.setStatus(HttpStatus.OK);
+            } catch (Exception e) {
+                responseError(response, e);
+            }
+        } else {
+            responseError(response, new InvalidRequestException(request.getPath()));
+        }
 	}
 
 	public void doDelete(HttpRequest request, HttpResponse response) {

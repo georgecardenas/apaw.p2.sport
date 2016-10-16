@@ -37,8 +37,25 @@ public class SportMain {
         request.setBody("ajedrez");
         this.request();
         
+        request.setMethod(HttpMethod.PUT);
+        request.setPath("users/uno/sport");
+        request.setBody("tenis");
+        this.request();
+        request.setBody("noDeporte");
+        this.request();
+        request.setPath("users/dos/sport");
+        request.setBody("tenis");
+        this.request();
+        request.setBody("ajedrez");
+        this.request();
+        
         request.setMethod(HttpMethod.GET);
-        request.setPath("sports");
+        request.setPath("users/search");
+        request.addQueryParam("sport", "tenis");
+        this.request();
+        
+        request.setMethod(HttpMethod.POST);
+        request.setPath("noPath");
         request.clearQueryParams();
         request.setBody("");
         this.request();

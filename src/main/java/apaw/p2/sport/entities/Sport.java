@@ -22,17 +22,13 @@ public class Sport {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setId(int id) {
 		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Vote [id=" + id + ", name=" + name + "]";
+		return "Sport [id=" + id + ", name=" + name + "]";
 	}
 
 }

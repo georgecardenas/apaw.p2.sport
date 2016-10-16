@@ -1,5 +1,8 @@
 package apaw.p2.sport.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
     private int id;
@@ -7,6 +10,8 @@ public class User {
     private String nick;
     
     private String email;
+    
+    private List<Sport> sports;
 
     public User() {
     }
@@ -14,6 +19,7 @@ public class User {
     public User(String nick, String email) {
         this.nick = nick;
         this.email = email;
+        this.sports = new ArrayList<>();    
     }
 
     public int getId() {
@@ -24,16 +30,12 @@ public class User {
         return nick;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
     public String getEmail() {
         return email;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
+    
+    public List<Sport> getSports(){
+        return sports;
     }
 
     public void setId(int id) {
@@ -42,7 +44,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "Vote [id=" + id + ", nick=" + nick + ", email=" + email + "]";
+		return "User [id=" + id + ", nick=" + nick + ", email=" + email + "]";
 	}
 
 }
